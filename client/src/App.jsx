@@ -7,12 +7,12 @@ const App = () => {
 
   useEffect(() => {
     // Replace '/api/test' with your actual endpoint
-    axios.get('http://localhost:5000/api/test')
+    axios.get('http://localhost:5000/api/')
       .then((response) => {
-        setData(response.data); // Save the response data in state
+        setData(response.data); 
       })
       .catch((error) => {
-        setError(error.message); // Save any error message in state
+        setError(error.message); 
       });
   }, []);
 
