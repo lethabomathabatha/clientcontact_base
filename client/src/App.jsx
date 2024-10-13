@@ -1,45 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+import Home from './components/Home';
+import TestAPI from './components/TestAPI';
 
-  const fetchAPI = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/');
-      setData(response.data.fruits);
-      console.log(response.data.fruits);
-    } catch (error) {
-      setError('Failed to fetch data');
-    }
-  };
-
-  useEffect(() => {
-    fetchAPI();
-  }, []);
-
+export default function App() {
   return (
-    <div>
-      <h1>API Test</h1>
-      {data.length > 0 ? (
-        <div>
-          <h2>Data from Server:</h2>
-          {data.map((fruit, index) => (
-            <div key={index}>
-              <p>{fruit}</p>
-              <br />
-            </div>
-          ))}
-        </div>
-      ) : error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
-};
-
-export default App;
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/api" element={<TestAPI />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
