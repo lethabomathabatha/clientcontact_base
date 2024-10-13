@@ -2,27 +2,35 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const App = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
 
+  const fetchAPI = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/');
+      setData(response.data.fruits);
+      console.log(response.data.fruits);
+    } catch (error) {
+      setError('Failed to fetch data');
+    }
+  };
+
   useEffect(() => {
-    // Replace '/api/test' with your actual endpoint
-    axios.get('http://localhost:5000/api/')
-      .then((response) => {
-        setData(response.data); 
-      })
-      .catch((error) => {
-        setError(error.message); 
-      });
+    fetchAPI();
   }, []);
 
   return (
     <div>
       <h1>API Test</h1>
-      {data ? (
+      {data.length > 0 ? (
         <div>
           <h2>Data from Server:</h2>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
+          {data.map((fruit, index) => (
+            <div key={index}>
+              <p>{fruit}</p>
+              <br />
+            </div>
+          ))}
         </div>
       ) : error ? (
         <p>Error: {error}</p>
