@@ -7,7 +7,7 @@ import Home from './components/Home';
 import TestAPI from './components/TestAPI';
 import ClientsPage from './components/Clients/ClientsPage';
 import ContactsPage from './components/Contacts/ContactsPage';
-// import ClientsDetails from './components/Clients/ClientsDetails';
+import ClientsDetails from './components/Clients/ClientsDetails';
 // import ContactsDetails from './components/Contacts/ContactsDetails';
 import CreateClient from './components/Clients/CreateClient';
 // import CreateContact from './components/Contacts/CreateContact';
@@ -21,6 +21,7 @@ export default function App() {
         <Route path="/clients" element={<ClientsPage />} />
         <Route path="/clients/new" element={<CreateClient />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/clients/:client_id" element={<ClientsDetails />} />
       </Routes>
     </BrowserRouter>
   )

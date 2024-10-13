@@ -21,7 +21,9 @@ export default function ClientsTable() {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                        <th>Client Name</th>
+                        <th>
+                            <Link to="/clients/:client_id">Client Name</Link>
+                        </th>
                         <th>Client Code</th>
                         <th>Number of Contacts</th>
                         </tr>
