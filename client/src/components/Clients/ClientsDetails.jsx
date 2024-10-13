@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import ClientsGeneralTab from './Clients/ClientsUpdateTabs/ClientsGeneralTab';
-// import ClientsContactsTab from './Clients/ClientsUpdateTabs/Clients/ClientsContactsTab';
+// import ClientsContactsTab from './Clients/ClientsUpdateTabs/ClientsContactsTab';
 
 export default function ClientsDetails() {
   const [activeTab, setActiveTab] = useState('general');
