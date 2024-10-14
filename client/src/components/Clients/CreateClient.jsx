@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateClient() {
-    const [client_name, setClientName] = useState('');
+    const [name, setName] = useState('');
     const [validated, setValidated] = useState(false);
     const [validationMsg, setValidationMsg] = useState('');
     const navigate = useNavigate()
@@ -14,7 +14,7 @@ export default function CreateClient() {
         e.preventDefault();
 
         // check if client_name is empty
-        if (!client_name) {
+        if (!name) {
             setValidationMsg("Client Name is required.");
             setValidated(false);
             return;
@@ -24,7 +24,7 @@ export default function CreateClient() {
         }
 
         // submit client creation form
-        axios.post('http://localhost:5000/create_client', { client_name })
+        axios.post('http://localhost:5000/api/client', { name })
         .then((res) => {
             navigate('/clients/success')
             console.log(res);   
@@ -41,16 +41,16 @@ export default function CreateClient() {
 
                 <form onSubmit={handleClientSubmit} noValidate method="post">
                     <div className="form-floating p-2 mb-3">
-                        <label htmlFor="client_name">Client Name</label>
+                        <label htmlFor="name">Client Name</label>
                         <input 
                             type="text" 
                             className="form-control" 
-                            id="client_name" 
+                            id="name" 
                             placeholder="Client Name" 
-                            name="client_name" 
+                            name="name" 
                             required
-                            value={client_name} 
-                            onChange={(e) => setClientName(e.target.value)}  
+                            value={name} 
+                            onChange={(e) => setName(e.target.value)}  
                         />
                         {validationMsg && (
                             <div className="text-danger">{validationMsg}</div>
