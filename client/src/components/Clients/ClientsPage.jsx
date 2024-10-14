@@ -15,6 +15,8 @@ export default function ClientsPage() {
     
     return (
         <div className="text-white min-vh-100 ">
+            <Link to='/' className='btn btn-success'>Back to Home</Link>
+            
             <div className='d-flex p-3 flex-row red-gradient align-items-center justify-content-between header-section'>
                 <h1 className='fw-bold '>Clients</h1> 
                 <Link to="/clients/new" className="bg-yellow fs-6 rounded px-4 py-2 text-dark">
