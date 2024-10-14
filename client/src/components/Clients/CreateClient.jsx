@@ -65,3 +65,8 @@ export default function CreateClient() {
         </>
     )
 }
+
+// <Form className="d-flex justify-content-center my-4">
+// <Form.Control type="email" placeholder="Your email address" className="w-50" />
+// <Button variant="warning" className="ms-2">Try it free</Button>
+// </Form>

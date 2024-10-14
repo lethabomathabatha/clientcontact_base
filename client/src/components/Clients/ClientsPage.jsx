@@ -3,24 +3,46 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import ClientsTable from './ClientsTable';
+// import App.css from
+import { Container, Row, Col, Form, Navbar, Nav } from 'react-bootstrap';
+// import  { ArrowRight }  from react-icons;
+import { FaCoffee } from 'react-icons/fa'
+
 
 import { Link } from 'react-router-dom';
 
 export default function ClientsPage() {
     
     return (
-        <>
-            <div className='text-center'>
-                <div className='fw-bold'>Clients</div>
+        <Container fluid className="text-white">
+            <div className='d-flex p-3 flex-row red-gradient align-items-center justify-content-between header-section'>
+                <p className='fw-bold fs-5 text-white'>Clients</p> 
+                <Link to="/clients/new" className="bg-yellow fs-5 rounded px-4 py-2 text-dark">
+                    + Create New Client 
+                </Link>
+            </div>
+
+            <Row className="min-vh-100 text-center">
+            <Col className="px-2">
+        
+            <div className=''>
+                <div className='fw-bold red-gradient w-100 rounded  fs-2'>
+                    Clients
+                    <Link to="/clients/new">
+                        <div className="bg-none fs-5">
+                        <FaCoffee />
+                            Create New Client</div>
+                    </Link>
+                </div>
 
                 {/* search bar to search existing clients from table */}
-                <input type="text" placeholder="Search clients..." />
+                {/* <input type="text" placeholder="Search clients..." /> */}
                 <br />
-                <Link to="/clients/new">
-                    <button>Create New Client</button>
-                </Link>
+                
                 <ClientsTable />
             </div>
-        </>
+            </Col>
+            </Row>
+        </Container>
     )
 }
