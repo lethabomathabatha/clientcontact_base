@@ -6,22 +6,28 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateClient() {
     const [client_name, setClientName] = useState('');
+    const [validated, setValidated] = useState(false);
+    const [validationMsg, setValidationMsg] = useState('');
     const navigate = useNavigate()
 
     const handleClientSubmit = (e) => {
         e.preventDefault();
 
-        const form = e.currentTarget;
-        if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
+        // check if client_name is empty
+        if (!client_name) {
+            setValidationMsg("Client Name is required.");
+            setValidated(false);
+            return;
+        } else {
+            setValidationMsg('');
+            setValidated(true);
         }
-        setValidated(true)
 
-        axios.post('/create_client', client_name)
+        // submit client creation form
+        axios.post('/create_client', { client_name })
         .then((res) => {
             navigate('/clients')
-            console.log(result);   
+            console.log(res);   
         })
         .catch((err) => console.log(err))
         
@@ -33,16 +39,27 @@ export default function CreateClient() {
                 <div className='fw-bold'>Create Client Form</div>
                 <Link to='/' className='btn btn-success'>Back to Home</Link>
 
-                <form action="" onSubmit={handleClientSubmit} noValidate validated={validated} method="">
-                    <div class="form-floatin">
-                        <label for="client_name">Client Name</label>
+                <form onSubmit={handleClientSubmit} noValidate method="">
+                    <div className="form-floating p-2 mb-3">
+                        <label htmlFor="client_name">Client Name</label>
                         <input 
-                            type="text" class="form-control" id="client_name" placeholder="Client Name" name='client_name' required
-                            value={client_name} onChange={(e) => setClientName(e.target.value)}  
+                            type="text" 
+                            className="form-control" 
+                            id="client_name" 
+                            placeholder="Client Name" 
+                            name="client_name" 
+                            required
+                            value={client_name} 
+                            onChange={(e) => setClientName(e.target.value)}  
                         />
-                    
+                        {validationMsg && (
+                            <div className="text-danger">{validationMsg}</div>
+                        )}                  
                     </div>
-                    <button type="submit">Create Client</button>  
+
+                    <button type="submit" className="btn btn-primary">
+                        Create Client
+                    </button>  
                 </form>  
             </div>
         </>
