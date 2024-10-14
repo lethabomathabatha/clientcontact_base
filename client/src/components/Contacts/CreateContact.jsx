@@ -1,73 +1,113 @@
-import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import React, { useState } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Button } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateContact() {
-    const [contactData, setContactData] = useState([
-        {
-            contact_name: '',
-            contact_surname: '',
-            contact_email: ''
-        }
-    ]);
-    const [validated, setValidated] = useState(false);
-    const [validationMsg, setValidationMsg] = useState('');
-    const navigate = useNavigate()
+    const [contactData, setContactData] = useState({
+        name: '',
+        contact_surname: '',
+        email: ''
+    });
+    const [validationMsgs, setValidationMsgs] = useState({
+        name: '',
+        contact_surname: '',
+        email: ''
+    });
+    const navigate = useNavigate();
 
-    const handleClientSubmit = (e) => {
+    const handleContactSubmit = (e) => {
         e.preventDefault();
 
-        // check if client_name is empty
-        if (!client_name) {
-            setValidationMsg("Client Name is required.");
-            setValidated(false);
-            return;
-        } else {
-            setValidationMsg('');
-            setValidated(true);
+        // Validate each field
+        let hasError = false;
+        const errors = {};
+
+        if (!contactData.name) {
+            errors.name = "Contact Name is required.";
+            hasError = true;
+        }
+        if (!contactData.contact_surname) {
+            errors.contact_surname = "Contact Surname is required.";
+            hasError = true;
+        }
+        if (!contactData.email) {
+            errors.email = "Contact Email is required.";
+            hasError = true;
         }
 
-        // submit client creation form
-        axios.post('http://localhost:5000/create_client', { client_name })
-        .then((res) => {
-            navigate('/clients/success')
-            console.log(res);   
-        })
-        .catch((err) => console.log(err))
-        
+        setValidationMsgs(errors);
+
+        if (hasError) return;
+
+        // clear validation messages and submit data
+        axios.post('http://localhost:5000/api/contact', contactData)
+            .then((res) => {
+                navigate('/contacts/success');
+                console.log(res);   
+            })
+            .catch((err) => console.log(err));
     }
-    
+
     return (
-        <>
-            <div className='text-center'>
-                <div className='fw-bold'>Create Client Form</div>
-                <Link to='/' className='btn btn-success'>Back to Home</Link>
+        <div className='text-center'>
+            <div className='fw-bold'>Create Contact Form</div>
+            <Link to='/' className='btn btn-success'>Back to Home</Link>
 
-                <form onSubmit={handleClientSubmit} noValidate method="post">
-                    <div className="form-floating p-2 mb-3">
-                        <label htmlFor="client_name">ontat Name</label>
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            id="client_name" 
-                            placeholder="Client Name" 
-                            name="client_name" 
-                            required
-                            value={client_name} 
-                            onChange={(e) => setContactData(e.target.value)}  
-                        />
-                        {validationMsg && (
-                            <div className="text-danger">{validationMsg}</div>
-                        )}                  
-                    </div>
+            <form onSubmit={handleContactSubmit} noValidate method="post">
+                <div className="form-floating p-2 mb-3">
+                    <label htmlFor="name">Contact Name</label>
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        id="name" 
+                        placeholder="Contact Name" 
+                        name="name" 
+                        required
+                        value={contactData.name} 
+                        onChange={(e) => setContactData({ ...contactData, name: e.target.value })}  
+                    />
+                    {validationMsgs.name && (
+                        <div className="text-danger">{validationMsgs.name}</div>
+                    )}
+                </div>
+                <div className="form-floating p-2 mb-3">
+                    <label htmlFor="contact_surname">Contact Surname</label>
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        id="contact_surname" 
+                        placeholder="Contact Surname" 
+                        name="contact_surname" 
+                        required
+                        value={contactData.contact_surname} 
+                        onChange={(e) => setContactData({ ...contactData, contact_surname: e.target.value })}  
+                    />
+                    {validationMsgs.contact_surname && (
+                        <div className="text-danger">{validationMsgs.contact_surname}</div>
+                    )}
+                </div>
+                <div className="form-floating p-2 mb-3">
+                    <label htmlFor="email">Contact Email</label>
+                    <input 
+                        type="email" 
+                        className="form-control" 
+                        id="email" 
+                        placeholder="Contact Email" 
+                        name="email" 
+                        required
+                        value={contactData.email} 
+                        onChange={(e) => setContactData({ ...contactData, email: e.target.value })}  
+                    />
+                    {validationMsgs.email && (
+                        <div className="text-danger">{validationMsgs.email}</div>
+                    )}
+                </div>
 
-                    <button type="submit" className="btn btn-primary">
-                        Create Contact
-                    </button>  
-                </form>  
-            </div>
-        </>
-    )
+                <button type="submit" className="btn btn-primary">
+                    Create Contact
+                </button>  
+            </form>  
+        </div>
+    );
 }
