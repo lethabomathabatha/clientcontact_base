@@ -21,19 +21,8 @@ export default function ClientsPage() {
                     + Create New Client 
                 </Link>
             </div>
-
-            
         
             <div className=''>
-                <div className='fw-bold red-gradient w-100 rounded  fs-2'>
-                    Clients
-                    <Link to="/clients/new">
-                        <div className="bg-none fs-5">
-                        <FaCoffee />
-                            Create New Client</div>
-                    </Link>
-                </div>
-
                 {/* search bar to search existing clients from table */}
                 {/* <input type="text" placeholder="Search clients..." /> */}
                 <br />
