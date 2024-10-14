@@ -1,42 +1,59 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  /* text-align: center; */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* mobile view */
+
+
+
+
+
+
+
+
+/* new app styling */
+.hero-section {
+  background: #333333;  
+  background: -webkit-linear-gradient(to right, #dd1818, #1d1c1c);
+  background: linear-gradient(to right, #dd1818, #1d1c1c); 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu-btn {
+  font-size: 1.25rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.phone-mockup {
+  width: 250px;
+  height: 500px;
+  box-shadow: 0px 10px 20px rgba(97, 31, 31, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card {
-  padding: 2em;
+.feature-card {
+  width: 200px;
+  height: 250px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.read-the-docs {
-  color: #888;
+button.btn-warning {
+  border-radius: 50px;
+}
+
+button.btn-warning:hover {
+  color: #0f3a20;
+  background-color: #f1c40f;
 }
