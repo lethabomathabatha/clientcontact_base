@@ -26,7 +26,7 @@ export default function CreateClient() {
         // submit client creation form
         axios.post('http://localhost:5000/create_client', { client_name })
         .then((res) => {
-            navigate('/clients')
+            navigate('/clients/success')
             console.log(res);   
         })
         .catch((err) => console.log(err))

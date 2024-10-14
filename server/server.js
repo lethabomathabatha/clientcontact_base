@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const path = require('path');
 const cors = require('cors');
 const corsOptions ={
@@ -21,14 +21,14 @@ app.get("/api", (req, res) => {
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "cape**123",
     database: "clientcontact_base"
 })
 
 // confirm db connection
 db.connect((err) => {
     if (err) {
-        console.error('Database connection failed:', err.stack);
+        console.error('Database connection failure:', err.stack);
         return;
     }
     console.log('Connected to the database as ID', db.threadId);
@@ -39,5 +39,5 @@ db.connect((err) => {
 const port = 5000;
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+    console.log(`Server listening on ports ${port}`);
 });
