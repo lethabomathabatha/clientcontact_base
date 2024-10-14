@@ -16,7 +16,7 @@ export default function ContactsPage() {
                 {/* search bar to search existing clients from table */}
                 <input type="text" placeholder="Search contacts..." />
                 <br />
-                <Link to="/clients/new">
+                <Link to="/contacts/new">
                     <button>Create New Contact</button>
                 </Link>
                 <ContactsTable />
