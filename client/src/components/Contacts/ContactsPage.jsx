@@ -9,18 +9,18 @@ import { Link } from 'react-router-dom';
 export default function ContactsPage() {
     
     return (
-        <>
-            <div className='text-center'>
+        <div className="text-white min-vh-100 ">
+            <Link to='/' className='btn btn-success'>Back to Home</Link>
+            
                 <div className='fw-bold'>Contacts</div>
 
                 {/* search bar to search existing clients from table */}
-                <input type="text" placeholder="Search contacts..." />
+                {/* <input type="text" placeholder="Search contacts..." /> */}
                 <br />
                 <Link to="/contacts/new">
                     <button>Create New Contact</button>
                 </Link>
                 <ContactsTable />
-            </div>
-        </>
+        </div>
     )
 }
