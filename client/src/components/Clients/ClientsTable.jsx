@@ -1,45 +1,56 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function ClientsTable() {
+    const [clients, setClients] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // dummy client data
-    const clients = [
-        { client_id: 1, client_name: 'Santam', client_code: 'SAN001', contactsCount: 3 },
-        { client_id: 2, client_name: 'First National Bank', client_code: 'FNB001', contactsCount: 1 },
-        { client_id: 3, client_name: 'Oracle', client_code: 'ORA001', contactsCount: 5 }
-    ]
-    
+    useEffect(() => {
+        // fetch clients 
+        axios.get('http://localhost:5000/api/clients')
+            .then((response) => {
+                console.log(response.data); 
+                setClients(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("There was an error fetching the clients!", error);
+                setLoading(false);
+            });
+    }, []);
+
     return (
-        <>
-            <div className='text-center'>
-                <div className='fw-bold'>Clients Table</div>
+        <div className='text-center'>
+            <div className='fw-bold'>Clients Table</div>
 
-                <table className="table table-striped ">
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <table className="table table-striped">
                     <thead>
                         <tr>
-                        <th>
-                            <Link to="/clients/:client_id">Client Name</Link>
-                        </th>
-                        <th>Client Code</th>
-                        <th>Number of Contacts</th>
+                            <th>Client Name</th>
+                            <th>Client Code</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {clients.map(client => (
-                        <tr key={client.client_id}>
-                            <td><Link to={`/clients/${client.client_id}`}>{client.client_name}</Link></td>
-                            <td>{client.client_code}</td>
-                            <td>{client.contactsCount}</td>
-                        </tr>
-                        ))}
+                        {clients.length > 0 ? (
+                            clients.map((client, index) => (
+                                <tr key={index}>
+                                    <td><Link to={`/clients/${client.code}`}>{client.name}</Link></td>
+                                    <td>{client.code}</td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="2" className="text-center">No clients found</td>
+                            </tr>
+                        )}
                     </tbody>
-                    </table>
-              
-            </div>
-        </>
-    )
+                </table>
+            )}
+        </div>
+    );
 }
