@@ -17,6 +17,25 @@ app.get("/api", (req, res) => {
     res.json({ fruits: [ "Hello", "World!" ] });
 });
 
+// database connection
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "clientcontact_base"
+})
+
+// confirm db connection
+db.connect((err) => {
+    if (err) {
+        console.error('Database connection failed:', err.stack);
+        return;
+    }
+    console.log('Connected to the database as ID', db.threadId);
+});
+
+
+
 const port = 5000;
 
 app.listen(port, () => {
