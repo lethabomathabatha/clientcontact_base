@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
@@ -24,7 +24,7 @@ export default function CreateClient() {
         }
 
         // submit client creation form
-        axios.post('/create_client', { client_name })
+        axios.post('http://localhost:5000/create_client', { client_name })
         .then((res) => {
             navigate('/clients')
             console.log(res);   
@@ -39,7 +39,7 @@ export default function CreateClient() {
                 <div className='fw-bold'>Create Client Form</div>
                 <Link to='/' className='btn btn-success'>Back to Home</Link>
 
-                <form onSubmit={handleClientSubmit} noValidate method="">
+                <form onSubmit={handleClientSubmit} noValidate method="post">
                     <div className="form-floating p-2 mb-3">
                         <label htmlFor="client_name">Client Name</label>
                         <input 
