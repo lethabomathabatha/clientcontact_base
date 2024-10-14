@@ -12,6 +12,7 @@ import ContactsDetails from './components/Contacts/ContactsDetails';
 import CreateClient from './components/Clients/CreateClient';
 import CreateContact from './components/Contacts/CreateContact';
 import ClientSuccess from './components/Clients/ClientSuccess';
+import ContactSuccess from './components/Contacts/ContactSuccess'
 
 export default function App() {
   return (
@@ -26,8 +27,8 @@ export default function App() {
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/clients/:client_id" element={<ClientsDetails />} />
         <Route path="/contacts/:contact_id" element={<ContactsDetails />} />
-
         <Route path="/clients/success" element={<ClientSuccess />} />
+        <Route path="/contacts/success" element={<ContactSuccess />} />
       </Routes>
     </BrowserRouter>
   )
