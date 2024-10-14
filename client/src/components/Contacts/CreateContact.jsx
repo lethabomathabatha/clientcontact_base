@@ -5,24 +5,67 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Link } from 'react-router-dom';
 
 export default function CreateContact() {
-    const [contact_name, setContactName] = useState('');
+    const [contactData, setContactData] = useState([
+        {
+            contact_name: '',
+            contact_surname: '',
+            contact_email: ''
+        }
+    ]);
+    const [validated, setValidated] = useState(false);
+    const [validationMsg, setValidationMsg] = useState('');
+    const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleClientSubmit = (e) => {
         e.preventDefault();
-        console.log(contact_name);
+
+        // check if client_name is empty
+        if (!client_name) {
+            setValidationMsg("Client Name is required.");
+            setValidated(false);
+            return;
+        } else {
+            setValidationMsg('');
+            setValidated(true);
+        }
+
+        // submit client creation form
+        axios.post('http://localhost:5000/create_client', { client_name })
+        .then((res) => {
+            navigate('/clients/success')
+            console.log(res);   
+        })
+        .catch((err) => console.log(err))
+        
     }
     
     return (
         <>
             <div className='text-center'>
-                <div className='fw-bold'>Create Contact Form</div>
+                <div className='fw-bold'>Create Client Form</div>
+                <Link to='/' className='btn btn-success'>Back to Home</Link>
 
-                <form action="" onSubmit={handleSubmit} method="">
-                    <label>
-                        Contact Name:
-                        <input type="text" value={contact_name} onChange={(e) => setContactName(e.target.value)} />
-                    </label>
-                    <button type="submit">Create Contact</button>  
+                <form onSubmit={handleClientSubmit} noValidate method="post">
+                    <div className="form-floating p-2 mb-3">
+                        <label htmlFor="client_name">ontat Name</label>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="client_name" 
+                            placeholder="Client Name" 
+                            name="client_name" 
+                            required
+                            value={client_name} 
+                            onChange={(e) => setContactData(e.target.value)}  
+                        />
+                        {validationMsg && (
+                            <div className="text-danger">{validationMsg}</div>
+                        )}                  
+                    </div>
+
+                    <button type="submit" className="btn btn-primary">
+                        Create Contact
+                    </button>  
                 </form>  
             </div>
         </>
