@@ -14,16 +14,15 @@ import { Link } from 'react-router-dom';
 export default function ClientsPage() {
     
     return (
-        <Container fluid className="text-white">
+        <div className="text-white min-vh-100 ">
             <div className='d-flex p-3 flex-row red-gradient align-items-center justify-content-between header-section'>
-                <p className='fw-bold fs-5 text-white'>Clients</p> 
-                <Link to="/clients/new" className="bg-yellow fs-5 rounded px-4 py-2 text-dark">
+                <h1 className='fw-bold '>Clients</h1> 
+                <Link to="/clients/new" className="bg-yellow fs-6 rounded px-4 py-2 text-dark">
                     + Create New Client 
                 </Link>
             </div>
 
-            <Row className="min-vh-100 text-center">
-            <Col className="px-2">
+            
         
             <div className=''>
                 <div className='fw-bold red-gradient w-100 rounded  fs-2'>
@@ -41,8 +40,7 @@ export default function ClientsPage() {
                 
                 <ClientsTable />
             </div>
-            </Col>
-            </Row>
-        </Container>
+       
+        </div>
     )
 }

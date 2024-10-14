@@ -18,7 +18,7 @@ export default function ClientsTable() {
             <div className='text-center'>
                 <div className='fw-bold'>Clients Table</div>
 
-                <table className="table table-striped">
+                <table className="table table-striped ">
                     <thead>
                         <tr>
                         <th>
