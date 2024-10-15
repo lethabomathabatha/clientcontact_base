@@ -1,12 +1,16 @@
-/* Reset margins and padding */
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Updated hero-section styling */
+.fw-bold {
+  font-weight: 600!important;
+}
+
 .hero-section {
   background: linear-gradient(to right, #190A05, #870000);
   color: white;
@@ -17,17 +21,29 @@ html, body {
   width: 100vw; 
   height: 100vh; 
   overflow: hidden;
-  
 }
-
 
 .hero-section h1 {
   font-size: 37px;
 }
 
 .home-btn {
-  font-size: 32px!important;
-  
+  font-size: 27px!important;
+  background-color: #B04438!important;
+  padding: 10px 30px!important;
+}
+
+.home-btn:hover {
+  background-color: #870000!important;
+  border: white!important;
+  color: white!important;
+}
+
+.home-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 
@@ -59,14 +75,7 @@ button.btn-warning {
   border-radius: 50px;
   background-color: rgba(206, 197, 190, 0.325);
   border-color: rgb(223, 202, 193);
-  color: whitesmoke;
-}
-
-button.btn-warning:hover {
-  color: #0f3a20;
-  background-color: #b03208d8;
-  color: whitesmoke;
-  border-color: rgb(223, 202, 193);
+  color: white;
 }
 
 .header-section {
@@ -91,7 +100,19 @@ button.btn-warning:hover {
 
 /* mobile queries */
 @media screen and (max-width: 768px) {
-  h1 {
-    font-size: 2rem!important;
+  .hero-section h1 {
+    font-size: 25px!important;
   }
+
+  .home-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .home-btn {
+    font-size: 15px!important;
+  }
+  
 }
