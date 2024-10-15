@@ -8,8 +8,8 @@ export default function ClientsTable() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // fetch clients 
-        axios.get('http://localhost:5000/api/clients')
+        // fetch clients with contact counts
+        axios.get('http://localhost:5000/api/client-contacts/count')
             .then((response) => {
                 console.log(response.data); 
                 setClients(response.data);
@@ -33,19 +33,21 @@ export default function ClientsTable() {
                         <tr>
                             <th>Client Name</th>
                             <th>Client Code</th>
+                            <th>Number of Contacts</th>
                         </tr>
                     </thead>
                     <tbody>
                         {clients.length > 0 ? (
-                            clients.map((client, index) => (
-                                <tr key={index}>
+                            clients.map((client) => (
+                                <tr key={client.id}>
                                     <td><Link to={`/clients/${client.code}`}>{client.name}</Link></td>
                                     <td>{client.code}</td>
+                                    <td>{client.contact_count}</td> {/* Use the contact count from the API */}
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="2" className="text-center">No clients found</td>
+                                <td colSpan="3" className="text-center">No clients found</td>
                             </tr>
                         )}
                     </tbody>
