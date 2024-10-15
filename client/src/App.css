@@ -1,3 +1,12 @@
+* {
+  --cc-dark-red: #870000;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  
+}
 
 html, body {
   margin: 0;
@@ -46,6 +55,26 @@ html, body {
   gap: 1rem;
 }
 
+.back-btn {
+  display: inline-flex; 
+  align-items: center;
+  padding: 10px 15px; 
+  background-color: black; 
+  border: none; 
+  border-radius: 30px;
+  text-decoration: none; 
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: var(--cc-dark-red)!important;
+  color: white; 
+}
+
+.back-btn svg {
+  margin-right: 5px;
+}
 
 .red-gradient {
   background: #870000; 
@@ -88,6 +117,7 @@ button.btn-warning {
   align-items: center;
   color: white;
 }
+
 
 .bg-yellow {
   background-color: rgb(238, 238, 230);
