@@ -56,8 +56,8 @@ html, body {
 }
 
 .back-btn {
-  display: inline-flex; 
-  align-items: center;
+  /* display: inline-flex;  */
+  /* align-items: center; */
   padding: 10px 15px; 
   background-color: black; 
   border: none; 
@@ -74,6 +74,33 @@ html, body {
 
 .back-btn svg {
   margin-right: 5px;
+}
+
+.custom-header-section {  
+  background: #870000;   
+  color: white;  
+  border-radius: 30px;  
+  padding: 15px 30px;  
+  margin: 10px 0;  
+  width: 70%;
+}
+
+.custom-header {  
+  font-size: 38px
+}
+
+.custom-create-btn {  
+  background-color: #FFFFFF;  
+  color: black;  
+  padding: 10px 20px;  
+  border-radius: 30px;
+  font-size: 15px;
+}
+
+.custom-create-btn:hover {  
+  background-color: #000000;  
+  color: white;  
+  border: none;
 }
 
 .red-gradient {
