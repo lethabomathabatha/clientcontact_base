@@ -30,6 +30,7 @@ db.connect((err) => {
   console.log("Connected to the database as ID", db.threadId);
 });
 
+// 
 const generateUniqueCode = (baseCode, callback) => {
   let i = 1;
 
@@ -64,7 +65,7 @@ const getNextClientId = (name, callback) => {
   } else {
     code = name.substring(0, 3).toUpperCase();
     while (code.length < 3) {
-      code += String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Add random letters if less than 3 characters
+      code += String.fromCharCode(65 + Math.floor(Math.random() * 26)); 
     }
   }
 
@@ -111,6 +112,21 @@ app.put("/api/client/:id", (req, res) => {
   });
 });
 
+app.get("/api/clients/:code", (req, res) => {
+    const { code } = req.params;
+    const query = "SELECT * FROM client WHERE code = ?";
+    db.query(query, [code], (err, results) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else if (results.length > 0) {
+        res.status(200).json(results[0]);
+      } else {
+        res.status(404).json({ message: "Client not found" });
+      }
+    });
+  });
+  
+
 // Create contact
 app.post("/api/contact", (req, res) => {
   const { name, contact_surname, email } = req.body;
@@ -152,6 +168,24 @@ app.post("/api/client-contact", (req, res) => {
     }
   });
 });
+
+// Count client-contact relationships
+app.get("/api/client-contacts/count", (req, res) => {
+    const query = `
+      SELECT c.id, c.name, c.code, COUNT(cc.contact) AS contact_count
+      FROM client c
+      LEFT JOIN client_contact cc ON c.id = cc.client
+      GROUP BY c.id
+    `;
+    db.query(query, (err, results) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(200).json(results);
+      }
+    });
+  });
+  
 
 // Get all clients
 app.get("/api/clients", (req, res) => {
