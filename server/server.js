@@ -214,15 +214,21 @@ app.get("/api/clients/:id", (req, res) => {
 
 // Get all contacts
 app.get("/api/contacts", (req, res) => {
-  const query = "SELECT * FROM contact";
-  db.query(query, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.status(200).json(results);
-    }
+    const query = `
+      SELECT c.id, c.name, c.contact_surname, c.email, COUNT(cc.client) AS client_count
+      FROM contact c
+      LEFT JOIN client_contact cc ON c.id = cc.contact
+      GROUP BY c.id
+    `;
+    db.query(query, (err, results) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(200).json(results);
+      }
+    });
   });
-});
+  
 
 // Get client by id
 app.get("/api/contacts/:id", (req, res) => {
@@ -253,6 +259,7 @@ app.get("/api/client-contacts", (req, res) => {
     }
   });
 });
+
 
 const port = 5000;
 
