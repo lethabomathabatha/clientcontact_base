@@ -27,7 +27,7 @@ export default function ContactsTable() {
         <div className='fw-bold'>Contacts Table</div>
 
         {loading ? (
-            <p>Loading...</p>
+            <p className='text-dark'>Loading...</p>
         ) : (
             <table className="table table-striped">
                 <thead>
