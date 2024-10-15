@@ -3,10 +3,9 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import ClientsTable from './ClientsTable';
-// import App.css from
+// import App.css from './App.css';
 import { Container, Row, Col, Form, Navbar, Nav } from 'react-bootstrap';
 // import  { ArrowRight }  from react-icons;
-import { FaCoffee } from 'react-icons/fa'
 
 
 import { Link } from 'react-router-dom';
@@ -14,7 +13,7 @@ import { Link } from 'react-router-dom';
 export default function ClientsPage() {
     
     return (
-        <div className="text-white min-vh-100 ">
+        <div className="text-white">
             <Link to='/' className='btn btn-success'>Back to Home</Link>
             
             <div className='d-flex p-3 flex-row red-gradient align-items-center justify-content-between header-section'>
@@ -23,15 +22,8 @@ export default function ClientsPage() {
                     + Create New Client 
                 </Link>
             </div>
-        
-            <div className=''>
-                {/* search bar to search existing clients from table */}
-                {/* <input type="text" placeholder="Search clients..." /> */}
-                <br />
-                
-                <ClientsTable />
-            </div>
-       
+            
+            <ClientsTable />
         </div>
     )
 }

@@ -69,20 +69,20 @@ button.btn-warning:hover {
   border-color: rgb(223, 202, 193);
 }
 
-.bg-yellow {
-  background-color: rgb(238, 238, 230);
+.header-section {
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  background: linear-gradient(to right, #190A05, #870000);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
-.header-section {
-  background: #870000; 
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.4rem;
-  padding: 40px 10px;
-  margin: 10px 0;
+.bg-yellow {
+  background-color: rgb(238, 238, 230);
+  padding: 0.5rem 1rem;
 }
 
 .header-section h1 {
