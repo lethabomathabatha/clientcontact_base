@@ -155,6 +155,27 @@ button.btn-warning {
   font-size: 3rem;
 }
 
+.success-container {
+  background: linear-gradient(to right, #190A05, #870000);
+  color: #228a0d; 
+  text-align: center;
+}
+
+.success-message {
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #d4edda;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.success-message h1 {
+  font-size: 2.5rem; 
+}
+
+.success-message p {
+  font-size: 1.25rem; 
+}
+
 /* mobile queries */
 @media screen and (max-width: 768px) {
   .hero-section h1 {
@@ -169,6 +190,18 @@ button.btn-warning {
   }
 
   .home-btn {
+    font-size: 15px!important;
+  }
+
+  .success-message h1 {
+    font-size: 1rem; 
+  }
+  
+  .success-message p {
+    font-size: 0.8rem; 
+  }
+
+  .back-btn {
     font-size: 15px!important;
   }
   
