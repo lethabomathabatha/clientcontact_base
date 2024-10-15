@@ -26,23 +26,23 @@ export default function ClientsTable() {
             <div className='fw-bold'>Clients Table</div>
 
             {loading ? (
-                <p>Loading...</p>
+                <p className='text-dark'>Loading...</p>
             ) : (
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>Client Name</th>
-                            <th>Client Code</th>
-                            <th>Number of Contacts</th>
+                            <th className='text-start'>Client Name</th>
+                            <th className='text-start'>Client Code</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {clients.length > 0 ? (
                             clients.map((client) => (
                                 <tr key={client.id}>
-                                    <td><Link to={`/clients/${client.code}`}>{client.name}</Link></td>
-                                    <td>{client.code}</td>
-                                    <td>{client.contact_count}</td> 
+                                    <td className='text-start'><Link to={`/clients/${client.code}`}>{client.name}</Link></td>
+                                    <td className='text-start'>{client.code}</td>
+                                    <td className='align-middle'>{client.contact_count}</td> 
                                 </tr>
                             ))
                         ) : (
