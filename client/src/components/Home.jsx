@@ -22,10 +22,10 @@ export default function Home() {
             <p className="lead">I want to see...</p>
 
             <Link to="/clients">
-            <button variant="warning" className=" ms-2 fs-5 px-4">Clients</button>
+            <Button variant="warning" className="home-btn ms-2 fs-5 px-4">Clients</Button>
             </Link>
             <Link to="/contacts">
-            <button variant="warning" className=" ms-2 fs-5 px-4">Contacts</button>
+            <Button variant="warning" className="home-btn ms-2 fs-5 px-4">Contacts</Button>
             </Link>
           </div>
         </div>

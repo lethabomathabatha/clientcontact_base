@@ -26,11 +26,8 @@ html, body {
 }
 
 .home-btn {
-  font-size: 28px;
-  background: #b04438;
-  border: 1px solid white;
-  color: white;
-  border-radius: 30px;
+  font-size: 32px!important;
+  
 }
 
 
