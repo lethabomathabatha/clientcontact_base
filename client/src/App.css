@@ -204,5 +204,10 @@ button.btn-warning {
   .back-btn {
     font-size: 15px!important;
   }
+
+  .custom-header {
+    font-size: 25px!important;
+    line-height: normal;
+  }
   
 }
