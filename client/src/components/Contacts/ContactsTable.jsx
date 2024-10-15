@@ -43,7 +43,7 @@ export default function ContactsTable() {
                         contacts.map((contact, index) => (
                             <tr key={index}>
                                 <td><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
-                                <td><Link to={`/contacts/${contact.id}`}>{contact.surname}</Link></td>
+                                <td><Link to={`/contacts/${contact.id}`}>{contact.contact_surname}</Link></td>
                                 <td>{contact.email}</td>
                                 <td>{contact.client_count}</td> 
                             </tr>
