@@ -42,15 +42,15 @@ export default function ContactsTable() {
                     {contacts.length > 0 ? (
                         contacts.map((contact, index) => (
                             <tr key={index}>
-                                <td><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
-                                <td><Link to={`/contacts/${contact.id}`}>{contact.contact_surname}</Link></td>
-                                <td>{contact.email}</td>
-                                <td>{contact.client_count}</td> 
+                                <td className='align-left'><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
+                                <td className='align-left'><Link to={`/contacts/${contact.id}`}>{contact.contact_surname}</Link></td>
+                                <td className='align-left'>{contact.email}</td>
+                                <td className='align-middle'>{contact.client_count}</td> 
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="2" className="text-center">No contacts found</td>
+                            <td colSpan="4" className="text-center">No contacts found</td>
                         </tr>
                     )}
                 </tbody>
