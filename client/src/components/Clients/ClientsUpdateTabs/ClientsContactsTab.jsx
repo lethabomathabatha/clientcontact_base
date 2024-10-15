@@ -3,16 +3,25 @@ import React from 'react';
 export default function ClientsContactsTab() {
     
   return (
+    
     <div>
-      <label>
-        Client Name:
-        <input type="text" />
-      </label>
-      <label>
-        Client Code:
-        <input type="text" readOnly />
-      </label>
-      <button>Save</button>
+      <div>
+        Client 1
+        <div>Contact Name:</div>
+        <div>Contact Surname:</div>
+        <div>Contact Email:</div>
+        
+        <button>Unlink Contact</button>
+      </div>
+
+      <div>
+        Client 2
+        <div>Contact Name:</div>
+        <div>Contact Surname:</div>
+        <div>Contact Email:</div>
+        
+        <button>Unlink Contact</button>
+      </div>
     </div>
   );
 }
