@@ -5,25 +5,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import './../App.css'; 
 import { Container, Row, Col, Form } from 'react-bootstrap';
+import { FiMenu } from 'react-icons/fi'
 
 export default function Home() {
     return (
       <div fluid className="hero-section text-white">
-            
+        <div className="d-flex flex-row justify-space-between position-top">
+        <p>Logo</p>
+        <FiMenu />
+        </div>
+      
         {/* Main Header Content */}
-        <Row className="d-flex justify-content-center align-items-center min-vh-100 text-center">
-          <Col md={6} className="px-2">
+        <div className="d-flex justify-content-center align-items-center text-center">
+          <div className="px-2 w-75">
             <h1>CC Base Efficiently Organizes Your Client and Contact Information</h1>
             <p className="lead">I want to see...</p>
 
             <Link to="/clients">
-            <Button variant="warning" className="ms-2 fs-5 px-4">Clients</Button>
+            <button variant="warning" className=" ms-2 fs-5 px-4">Clients</button>
             </Link>
             <Link to="/contacts">
-            <Button variant="warning" className="ms-2 fs-5 px-4">Contacts</Button>
+            <button variant="warning" className=" ms-2 fs-5 px-4">Contacts</button>
             </Link>
-          </Col>
-        </Row>
+          </div>
+        </div>
   
        
       </div>
