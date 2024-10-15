@@ -42,7 +42,7 @@ export default function ClientsTable() {
                                 <tr key={client.id}>
                                     <td><Link to={`/clients/${client.code}`}>{client.name}</Link></td>
                                     <td>{client.code}</td>
-                                    <td>{client.contact_count}</td> {/* Use the contact count from the API */}
+                                    <td>{client.contact_count}</td> 
                                 </tr>
                             ))
                         ) : (

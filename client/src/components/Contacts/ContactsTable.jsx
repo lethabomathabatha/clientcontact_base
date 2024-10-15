@@ -9,7 +9,7 @@ export default function ContactsTable() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // fetch contacts 
+        // fetch contacts with client 
         axios.get('http://localhost:5000/api/contacts')
             .then((response) => {
                 console.log(response.data); 
@@ -35,6 +35,7 @@ export default function ContactsTable() {
                         <th>Contact Name</th>
                         <th>Contact Surname</th>
                         <th>Contact Email</th>
+                        <th>Number of Clients</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +45,7 @@ export default function ContactsTable() {
                                 <td><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
                                 <td><Link to={`/contacts/${contact.id}`}>{contact.surname}</Link></td>
                                 <td>{contact.email}</td>
+                                <td>{contact.client_count}</td> 
                             </tr>
                         ))
                     ) : (
