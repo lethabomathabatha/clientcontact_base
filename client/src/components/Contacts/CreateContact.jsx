@@ -55,39 +55,41 @@ export default function CreateContact() {
             <Link to='/' className='btn btn-success'>Back to Home</Link>
 
             <form onSubmit={handleContactSubmit} noValidate method="post">
-                <div className="form-floating p-2 mb-3">
-                    <label htmlFor="name">Contact Name</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="name" 
-                        placeholder="Contact Name" 
-                        name="name" 
-                        required
-                        value={contactData.name} 
-                        onChange={(e) => setContactData({ ...contactData, name: e.target.value })}  
-                    />
-                    {validationMsgs.name && (
-                        <div className="text-danger">{validationMsgs.name}</div>
-                    )}
+                <div className="row mb-3 px-1">
+                    <div className="col-md-6 form-floating p-2">
+                        <label htmlFor="name">Contact Name</label>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="name" 
+                            placeholder="Contact Name" 
+                            name="name" 
+                            required
+                            value={contactData.name} 
+                            onChange={(e) => setContactData({ ...contactData, name: e.target.value })}  
+                        />
+                        {validationMsgs.name && (
+                            <div className="text-danger">{validationMsgs.name}</div>
+                        )}
+                    </div>
+                    <div className="col-md-6 form-floating p-2 px">
+                        <label htmlFor="contact_surname">Contact Surname</label>
+                        <input 
+                            type="text" 
+                            className="form-control" 
+                            id="contact_surname" 
+                            placeholder="Contact Surname" 
+                            name="contact_surname" 
+                            required
+                            value={contactData.contact_surname} 
+                            onChange={(e) => setContactData({ ...contactData, contact_surname: e.target.value })}  
+                        />
+                        {validationMsgs.contact_surname && (
+                            <div className="text-danger">{validationMsgs.contact_surname}</div>
+                        )}
+                    </div>
                 </div>
-                <div className="form-floating p-2 mb-3">
-                    <label htmlFor="contact_surname">Contact Surname</label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="contact_surname" 
-                        placeholder="Contact Surname" 
-                        name="contact_surname" 
-                        required
-                        value={contactData.contact_surname} 
-                        onChange={(e) => setContactData({ ...contactData, contact_surname: e.target.value })}  
-                    />
-                    {validationMsgs.contact_surname && (
-                        <div className="text-danger">{validationMsgs.contact_surname}</div>
-                    )}
-                </div>
-                <div className="form-floating p-2 mb-3">
+                <div className="form-floating p-2 mb-3 px-0">
                     <label htmlFor="email">Contact Email</label>
                     <input 
                         type="email" 
@@ -104,10 +106,10 @@ export default function CreateContact() {
                     )}
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="custom-create-btn border">
                     Create Contact
                 </button>  
-            </form>  
+            </form>    
         </div>
     );
 }
