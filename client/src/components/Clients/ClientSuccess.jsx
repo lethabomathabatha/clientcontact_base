@@ -10,7 +10,7 @@ export default function ClientSuccess() {
             <div className="success-message text-center">
                 <h1 className="fw-bold fs-3">Success!</h1>
                 <p className="lead">Contact successfully created!</p>
-                <Link to="/contacts" className="mt-2">
+                <Link to="/clients" className="mt-2">
                     <Button className='back-btn'>
                         View Clients
                     </Button>
