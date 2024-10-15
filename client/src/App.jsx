@@ -12,7 +12,8 @@ import ContactsDetails from './components/Contacts/ContactsDetails';
 import CreateClient from './components/Clients/CreateClient';
 import CreateContact from './components/Contacts/CreateContact';
 import ClientSuccess from './components/Clients/ClientSuccess';
-import ContactSuccess from './components/Contacts/ContactSuccess'
+import ContactSuccess from './components/Contacts/ContactSuccess';
+import ClientsGeneralTab from './components/Clients/ClientsUpdateTabs/ClientsGeneralTab';
 
 export default function App() {
   return (
@@ -29,6 +30,8 @@ export default function App() {
         <Route path="/contacts/:contact_id" element={<ContactsDetails />} />
         <Route path="/clients/success" element={<ClientSuccess />} />
         <Route path="/contacts/success" element={<ContactSuccess />} />
+
+        <Route path="/clients/:client_id/general" element={<ClientsGeneralTab />} />
       </Routes>
     </BrowserRouter>
   )

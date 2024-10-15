@@ -1,31 +1,36 @@
+// ClientsGeneralTab.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export default function ClientsGeneralTab() {
-  const { code } = useParams(); 
+  const { id } = useParams(); 
+  console.log("Client ID from route:", id); 
   const [clientName, setClientName] = useState('');
   const [originalClientName, setOriginalClientName] = useState('');
   const [clientCode, setClientCode] = useState('');
 
   useEffect(() => {
-    if (code) { 
-      axios.get(`http://localhost:5000/api/clients/${code}`)
+    if (id) { 
+      axios.get(`http://localhost:5000/api/clients/${id}`)
         .then((response) => {
           const client = response.data;
+          console.log("Fetched client data:", client); // Debugging line
           setClientName(client.name);
           setOriginalClientName(client.name);
-          setClientCode(client.code);
+          setClientCode(client.code); 
         })
         .catch((error) => {
           console.error("There was an error fetching the client data!", error);
+          alert("Failed to load client data.");
         });
     }
-  }, [code]);
+  }, [id]);
+  
 
   const handleSave = () => {
     if (clientName !== originalClientName) {
-      axios.put(`http://localhost:5000/api/clients/${code}`, { name: clientName })
+      axios.put(`http://localhost:5000/api/clients/${id}`, { name: clientName })
         .then(() => {
           alert('Client name updated successfully');
           setOriginalClientName(clientName); 
