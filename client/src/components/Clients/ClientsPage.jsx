@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import ClientsTable from './ClientsTable';
-// import App.css from './App.css';
-import { Container, Row, Col, Form, Navbar, Nav } from 'react-bootstrap';
-// import  { ArrowRight }  from react-icons;
-
+import { FiChevronLeft } from "react-icons/fi";
 
 import { Link } from 'react-router-dom';
 
 export default function ClientsPage() {
     
     return (
-        <div className="text-white">
-            <Link to='/' className='btn btn-success'>Back to Home</Link>
+        <div className="text-white m-5 mx-auto justify-content-center d-flex flex-column align-items-center">
+            <Link to='/' className=' back-btn text-decoration-none text-white'>
+                <FiChevronLeft />
+                Back to Home
+            </Link>
             
-            <div className='d-flex p-3 flex-row red-gradient align-items-center justify-content-between header-section'>
-                <h1 className='fw-bold '>Clients</h1> 
-                <Link to="/clients/new" className="bg-yellow fs-6 rounded px-4 py-2 text-dark">
-                    + Create New Client 
+              <div class="custom-header-section d-flex justify-content-between align-items-center">
+                <p class="custom-header text-lowercase fw-bold">Clients</p>
+           
+                <Link to="/clients/new">
+                    <button class="custom-create-btn fw-light px-4 ">+ Create New Client</button>
                 </Link>
             </div>
             
