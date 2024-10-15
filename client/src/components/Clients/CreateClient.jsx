@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { FiChevronLeft } from "react-icons/fi";
 
 export default function CreateClient() {
     const [name, setName] = useState('');
@@ -35,9 +35,16 @@ export default function CreateClient() {
     
     return (
         <>
-            <div className='text-center'>
+            <div className="text-whit m-5 mx-auto justify-content-center d-flex flex-column align-items-center">
                 <div className='fw-bold'>Create Client Form</div>
-                <Link to='/' className='btn btn-success'>Back to Home</Link>
+                   <Link to='/' className=' back-btn text-decoration-none text-white'>
+                        <FiChevronLeft />
+                        Back to Home
+                    </Link>
+
+                    <div class="custom-header-section d-flex justify-content-between align-items-center">
+                        <p class="custom-header text-lowercase fw-bold">Create a new client</p>           
+                    </div>
 
                 <form onSubmit={handleClientSubmit} noValidate method="post">
                     <div className="form-floating p-2 mb-3">
@@ -57,7 +64,7 @@ export default function CreateClient() {
                         )}                  
                     </div>
 
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="custom-create-btn border">
                         Create Client
                     </button>  
                 </form>  
