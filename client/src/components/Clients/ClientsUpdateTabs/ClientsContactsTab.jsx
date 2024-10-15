@@ -6,7 +6,7 @@ export default function ClientsContactsTab() {
     
     <div>
       <div>
-        Client 1
+        Contact 1
         <div>Contact Name:</div>
         <div>Contact Surname:</div>
         <div>Contact Email:</div>
@@ -15,7 +15,7 @@ export default function ClientsContactsTab() {
       </div>
 
       <div>
-        Client 2
+        Contact 2
         <div>Contact Name:</div>
         <div>Contact Surname:</div>
         <div>Contact Email:</div>

@@ -8,9 +8,8 @@ import { Container, Row, Col, Form } from 'react-bootstrap';
 
 export default function Home() {
     return (
-      <Container fluid className="hero-section text-white">
-
-        
+      <div fluid className="hero-section text-white">
+            
         {/* Main Header Content */}
         <Row className="d-flex justify-content-center align-items-center min-vh-100 text-center">
           <Col md={6} className="px-2">
@@ -18,16 +17,16 @@ export default function Home() {
             <p className="lead">I want to see...</p>
 
             <Link to="/clients">
-            <Button variant="warning" className="ms-2">Clients</Button>
+            <Button variant="warning" className="ms-2 fs-5 px-4">Clients</Button>
             </Link>
             <Link to="/contacts">
-            <Button variant="warning" className="ms-2">Contacts</Button>
+            <Button variant="warning" className="ms-2 fs-5 px-4">Contacts</Button>
             </Link>
           </Col>
         </Row>
   
        
-      </Container>
+      </div>
     );
   }
   
