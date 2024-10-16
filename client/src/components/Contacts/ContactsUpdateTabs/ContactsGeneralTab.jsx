@@ -4,22 +4,34 @@ import axios from 'axios';
 
 export default function ContactsGeneralTab() {
   const { id } = useParams(); 
-  const [contactName, setContactName] = useState('');
-  const [contactSurname, setContactSurname] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
-  const [originalContactName, setOriginalContactName] = useState('');
+  // const [contactName, setContactName] = useState('');
+  // const [contactSurname, setContactSurname] = useState('');
+  // const [contactEmail, setContactEmail] = useState('');
+  // const [originalContactName, setOriginalContactName] = useState('');
+  // get entire data set from contact
+  const [contactData, setContactData] = useState({
+    name: '',
+    contact_surname: '',
+    email: ''
+  });
+
+  const [originalContactData, setOriginalContactData] = useState({
+    name: '',
+    contact_surname: '',
+    email: ''
+  });
   
 
 useEffect(() => {
+  console.log(`first ${id}`)
   if (id) { 
-    axios.get(`http://localhost:5000/api/contact/${id}`)
+    console.log(`second ${id}`)
+    axios.get(`http://localhost:5000/api/contacts/${id}`)
       .then((response) => {
-        const contact = response.data;
-        console.log(contact);
-        setContactName(contact.name);
-        setOriginalContactName(contact.name);
-        setContactSurname(contact.surname); 
-        setContactEmail(contact.email);     
+        const contactData = response.data;
+        console.log(contactData);
+        setContactData(contactData.name)
+            
       })
       .catch((error) => {
         console.error("There was an error fetching the contact data!", error);
@@ -27,12 +39,13 @@ useEffect(() => {
   }
 }, [id]);
 
+
   const handleSave = () => {
-    if (contactName !== originalContactName) {
-      axios.put(`http://localhost:5000/api/contacts/${id}`, { name: contactName })
+    if (contactData.name !== originalContactData.name) {
+      axios.put(`http://localhost:5000/api/contacts/${id}`, { name: contactData.name })
         .then(() => {
           alert('Contact name updated successfully');
-          setOriginalContactName(contactName); 
+          setOriginalContactData(contactData.name); 
         })
         .catch((error) => {
           console.error("There was an error updating the contact name!", error);
@@ -48,9 +61,9 @@ useEffect(() => {
           type="text"
           className="form-control"
           id="name"
-          value={contactName}
-          placeholder={contactName}
-          onChange={(e) => setContactName(e.target.value)}
+          value={contactData.name}
+          placeholder={contactData.name}
+          onChange={(e) => setContactData.name(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -59,9 +72,9 @@ useEffect(() => {
           type="text"
           className="form-control"
           id="contact_surname"
-          value={contactSurname}
+          value={contactData.surname}
           placeholder='test'
-          onChange={(e) => setContactSurname(e.target.value)}
+          onChange={(e) => setContactData.contact_surname(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -70,9 +83,9 @@ useEffect(() => {
           type="email"
           className="form-control"
           id="email"
-          value={contactEmail}
+          value={contactData.email}
           placeholder='test'
-          onChange={(e) => setContactEmail(e.target.value)}
+          onChange={(e) => setContactData.email(e.target.value)}
         />
       </div>
       <button className="btn btn-primary" onClick={handleSave}>Save</button>
