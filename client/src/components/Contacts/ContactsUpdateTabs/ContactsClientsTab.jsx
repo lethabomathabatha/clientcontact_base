@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ContactsClientsTab() {
-  const [linkedContacts, setLinkedContacts] = useState([]);
+  const [linkedClients, setLinkedClients] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // fetch linked clients for contact
     axios.get(`http://localhost:5000/api/client-contacts`) 
       .then((response) => {
-        setLinkedContacts(response.data);
+        setLinkedClients(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
