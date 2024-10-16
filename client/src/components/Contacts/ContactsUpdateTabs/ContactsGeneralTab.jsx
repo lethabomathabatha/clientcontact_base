@@ -8,22 +8,24 @@ export default function ContactsGeneralTab() {
   const [contactSurname, setContactSurname] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [originalContactName, setOriginalContactName] = useState('');
-  // const [clientCode, setClientCode] = useState('');
+  
 
-  useEffect(() => {
-    if (id) { 
-      axios.get(`http://localhost:5000/api/contact/${id}`)
-        .then((response) => {
-          const client = response.data;
-          setContactName(contact.name);
-          setOriginalContactName(contact.name);
-          // setClientCode(client.code);
-        })
-        .catch((error) => {
-          console.error("There was an error fetching the contact data!", error);
-        });
-    }
-  }, [id]);
+useEffect(() => {
+  if (id) { 
+    axios.get(`http://localhost:5000/api/contact/${id}`)
+      .then((response) => {
+        const contact = response.data;
+        console.log(contact);
+        setContactName(contact.name);
+        setOriginalContactName(contact.name);
+        setContactSurname(contact.surname); 
+        setContactEmail(contact.email);     
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the contact data!", error);
+      });
+  }
+}, [id]);
 
   const handleSave = () => {
     if (contactName !== originalContactName) {
@@ -47,6 +49,7 @@ export default function ContactsGeneralTab() {
           className="form-control"
           id="name"
           value={contactName}
+          placeholder={contactName}
           onChange={(e) => setContactName(e.target.value)}
         />
       </div>
@@ -57,6 +60,7 @@ export default function ContactsGeneralTab() {
           className="form-control"
           id="contact_surname"
           value={contactSurname}
+          placeholder='test'
           onChange={(e) => setContactSurname(e.target.value)}
         />
       </div>
@@ -67,6 +71,7 @@ export default function ContactsGeneralTab() {
           className="form-control"
           id="email"
           value={contactEmail}
+          placeholder='test'
           onChange={(e) => setContactEmail(e.target.value)}
         />
       </div>
