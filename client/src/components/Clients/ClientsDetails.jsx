@@ -15,11 +15,11 @@ export default function ClientDetails() {
         Back to Clients
       </Link>
 
-      <div class="custom-header-section d-flex justify-content-between align-items-center">
-        <p class="custom-header text-lowercase fw-bold">Client name</p>
+      <div className="custom-header-section d-flex justify-content-between align-items-center">
+        <p className="custom-header text-lowercase fw-bold">Client name</p>
            
-        <Link to="/contacts/new">
-          <button class="custom-create-btn fw-light px-4 ">+ Create Contact Connection</button>
+        <Link to="/clients/new">
+          <button className="custom-create-btn fw-light px-4 ">+ Create Contact Connection</button>
         </Link>
       </div>
 
