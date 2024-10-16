@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { FiChevronLeft } from "react-icons/fi";
 
 export default function CreateContact() {
     const [contactData, setContactData] = useState({
@@ -50,9 +51,16 @@ export default function CreateContact() {
     }
 
     return (
-        <div className='text-center'>
-            <div className='fw-bold'>Create Contact Form</div>
-            <Link to='/' className='btn btn-success'>Back to Home</Link>
+        <div className="text-whit m-5 mx-auto justify-content-center d-flex flex-column align-items-center">
+            
+            <Link to='/' className=' back-btn text-decoration-none text-white'>
+                <FiChevronLeft />
+                Back to Home
+            </Link>
+
+            <div class="custom-header-section d-flex justify-content-between align-items-center">
+                <p class="custom-header text-lowercase fw-bold">Create a new contact</p>           
+            </div>
 
             <form onSubmit={handleContactSubmit} noValidate method="post">
                 <div className="row mb-3 px-1">
