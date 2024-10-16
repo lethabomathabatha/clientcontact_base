@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ClientsContactsTab() {
-  const [linkedClients, setLinkedClients] = useState([]);
+  const [linkedContacts, setLinkedContacts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // fetch linked clients for the contact (replace with actual contact ID or fetch all)
-    axios.get(`http://localhost:5000/api/client-contacts`) // adjust endpoint as needed
+    // fetch linked contacts for client
+    axios.get(`http://localhost:5000/api/client-contacts`) 
       .then((response) => {
-        setLinkedClients(response.data);
+        setLinkedContacts(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching linked clients:", error);
+        console.error("Error fetching linked contacts:", error);
         setIsLoading(false);
       });
   }, []);
 
-  const handleLinkClient = () => {
+  const handleLinkContact = () => {
     // test
-    alert('Redirecting to link a new client...'); 
+    alert('Redirecting to link a new contact...(test)'); 
   };
 
   if (isLoading) {
@@ -31,15 +31,15 @@ export default function ClientsContactsTab() {
     <div>
       {linkedClients.length === 0 ? (
         <div>
-          <p>No clients found</p>
-          <button onClick={handleLinkClient}>Link a Client</button>
+          <p>No contacts found</p>
+          <button onClick={handleLinkContact}>Link a Contact</button>
         </div>
       ) : (
-        linkedClients.map((client, index) => (
+        linkedContacts.map((contact, index) => (
           <div key={index}>
-            <div>Client Name: {client.client_name}</div>
-            <div>Client Code: {client.client_code}</div>
-            <button>Unlink Client</button>
+            <div>Client Name: {contact.contact_name}</div>
+            <div>Client Code: {contact.contact_code}</div>
+            <button>Unlink Contact</button>
           </div>
         ))
       )}
