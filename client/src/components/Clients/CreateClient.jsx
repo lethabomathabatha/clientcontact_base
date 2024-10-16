@@ -36,7 +36,7 @@ export default function CreateClient() {
     return (
         <>
             <div className="text-whit m-5 mx-auto justify-content-center d-flex flex-column align-items-center">
-                <div className='fw-bold'>Create Client Form</div>
+            
                    <Link to='/' className=' back-btn text-decoration-none text-white'>
                         <FiChevronLeft />
                         Back to Home
