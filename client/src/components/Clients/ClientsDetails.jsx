@@ -18,9 +18,10 @@ export default function ClientDetails() {
       <div className="custom-header-section d-flex justify-content-between align-items-center">
         <p className="custom-header text-lowercase fw-bold">Client details</p>
            
-        <Link to="/contacts/new">
+        <Link to="/link">
           <button className="custom-create-btn fw-light px-4 ">+ Create Contact Connection</button>
         </Link>
+        
       </div>
 
       <div className="d-flex flex-row mx-auto justify-content-center gap-2 align-items-center my-4">
