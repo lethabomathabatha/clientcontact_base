@@ -260,9 +260,9 @@ app.get("/api/contacts/:id", (req, res) => {
 //   });
 // });
 
-// Get client-contact relationships, optionally filtered by contact_id
+// Get client-contact relationships, optionally filtered by contact_id or client_id
 app.get("/api/client-contacts", (req, res) => {
-  const { contactId } = req.query;
+  const { contactId, clientId  } = req.query;
   let query = `
     SELECT cc.id, c.name AS client_name, c.code AS client_code, ct.name AS contact_name, ct.email 
     FROM client_contact cc
@@ -272,9 +272,15 @@ app.get("/api/client-contacts", (req, res) => {
 
   if (contactId) {
     query += ` WHERE cc.contact = ?`;
+  } else if (clientId) {
+    query += ` WHERE cc.client = ?`;
+  }
+  
+  if (contactId || clientId) {
+    query += ` ORDER BY c.name`;
   }
 
-  db.query(query, contactId ? [contactId] : [], (err, results) => {
+  db.query(query, contactId ? [contactId] : clientId ? [clientId] : [], (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
