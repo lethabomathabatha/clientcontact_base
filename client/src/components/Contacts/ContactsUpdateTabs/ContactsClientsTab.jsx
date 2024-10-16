@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function ContactsClientsTab() {
   const [linkedClients, setLinkedClients] = useState([]);
@@ -18,11 +19,6 @@ export default function ContactsClientsTab() {
       });
   }, []);
 
-  const handleLinkClient = () => {
-    // test
-    alert('Redirecting to link a new client...'); 
-  };
-
   if (isLoading) {
     return <div className='text-dark'>Loading...</div>
   }
@@ -32,7 +28,8 @@ export default function ContactsClientsTab() {
       {linkedClients.length === 0 ? (
         <div>
           <p>No clients found</p>
-          <button onClick={handleLinkClient}>Link a Client</button>
+          <button><Link to="/link">Link a Client</Link> </button>
+
         </div>
       ) : (
         linkedClients.map((client, index) => (
