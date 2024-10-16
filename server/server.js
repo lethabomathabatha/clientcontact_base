@@ -244,14 +244,37 @@ app.get("/api/contacts/:id", (req, res) => {
 });
 
 // Get all client-contact relationships
+// app.get("/api/client-contacts", (req, res) => {
+//   const query = `
+//       SELECT cc.id, c.name as client_name, ct.name as contact_name, ct.email
+//       FROM client_contact cc
+//       JOIN client c ON cc.client = c.id
+//       JOIN contact ct ON cc.contact = ct.id
+//   `;
+//   db.query(query, (err, results) => {
+//     if (err) {
+//       res.status(500).json({ error: err.message });
+//     } else {
+//       res.status(200).json(results);
+//     }
+//   });
+// });
+
+// Get client-contact relationships, optionally filtered by contact_id
 app.get("/api/client-contacts", (req, res) => {
-  const query = `
-      SELECT cc.id, c.name as client_name, ct.name as contact_name, ct.email
-      FROM client_contact cc
-      JOIN client c ON cc.client = c.id
-      JOIN contact ct ON cc.contact = ct.id
+  const { contactId } = req.query;
+  let query = `
+    SELECT cc.id, c.name AS client_name, c.code AS client_code, ct.name AS contact_name, ct.email 
+    FROM client_contact cc
+    JOIN client c ON cc.client = c.id
+    JOIN contact ct ON cc.contact = ct.id
   `;
-  db.query(query, (err, results) => {
+
+  if (contactId) {
+    query += ` WHERE cc.contact = ?`;
+  }
+
+  db.query(query, contactId ? [contactId] : [], (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
     } else {
@@ -259,6 +282,7 @@ app.get("/api/client-contacts", (req, res) => {
     }
   });
 });
+
 
 
 const port = 5000;
