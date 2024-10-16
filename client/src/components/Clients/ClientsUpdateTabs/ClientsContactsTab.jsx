@@ -3,20 +3,20 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 
 export default function ClientsContactsTab() {
+  const { id: clientId } = useParams();
   const [linkedContacts, setLinkedContacts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { id: clientId } = useParams();
 
   useEffect(() => {
     // fetch linked contacts for client
     if (clientId) {
       axios.get(`http://localhost:5000/api/client-contacts?clientId=${clientId}`)
         .then((response) => {
-          setLinkedClients(response.data);
+          setLinkedContacts(response.data);
           setIsLoading(false);
         })
         .catch((error) => {
-          console.error("Error fetching linked clients:", error);
+          console.error("Error fetching linked contacts:", error);
           setIsLoading(false);
         });
     }
