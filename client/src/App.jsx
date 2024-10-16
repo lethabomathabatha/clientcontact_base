@@ -14,6 +14,7 @@ import ClientSuccess from './components/Clients/ClientSuccess';
 import ContactSuccess from './components/Contacts/ContactSuccess';
 import ClientsGeneralTab from './components/Clients/ClientsUpdateTabs/ClientsGeneralTab';
 import LinkClientContact from './components/Clients/LinkClientContact';
+import ClientsContactsTab from './components/Clients/ClientsUpdateTabs/ClientsContactsTab';
 
 export default function App() {
   return (
@@ -34,6 +35,8 @@ export default function App() {
         <Route path="/contacts/success" element={<ContactSuccess />} />
 
         <Route path="/clients/:client_id/general" element={<ClientsGeneralTab />} />
+        <Route path="/clients/:code/:id" component={ClientsContactsTab} />
+
 
         <Route path="/link" element={<LinkClientContact />} />
       </Routes>

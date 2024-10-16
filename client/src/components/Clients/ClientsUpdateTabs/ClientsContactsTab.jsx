@@ -4,7 +4,8 @@ import axios from 'axios';
 
 export default function ClientsContactsTab() {
   const { code: clientCode } = useParams();
-  const [linkedContacts, setLinkedContacts] = useState([]); // Initialize as an array
+  const { id: clientId } = useParams();
+  const [linkedContacts, setLinkedContacts] = useState([]); 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -23,6 +24,22 @@ export default function ClientsContactsTab() {
     }
   }, [clientCode]);
 
+   // handle unlinking
+  const handleUnlinkContact = (contactId) => {
+    axios.delete(`http://localhost:5000/api/client-contact?clientId=${clientId}&contactId=${contactId}`)
+      .then((response) => {
+        // Filter out the unlinked client from the state
+        setLinkedContacts((prevContacts) => 
+          prevContacts.filter(contact => contact.id !== contactId)
+        );
+        console.log("Contact unlinked successfully:", response.data);
+        alert("Contact unlinked successfully");
+      })
+      .catch((error) => {
+        console.error("Error unlinking Contact:", error);
+      });
+  };
+
   if (isLoading) {
     return <div className="text-dark">Loading...</div>;
   }
@@ -40,6 +57,7 @@ export default function ClientsContactsTab() {
             <p>Name: {contact.contact_name}</p>
 
             <p>Email: {contact.email}</p>
+            <button onClick={() => handleUnlinkContact(contact.id)}>Unlink Contact</button>
           </div>
         ))
       )}

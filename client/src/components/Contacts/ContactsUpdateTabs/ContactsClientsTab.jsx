@@ -21,6 +21,23 @@ export default function ContactsClientsTab() {
     }
   }, [contactId]);
 
+
+  // handle unlinking
+  const handleUnlinkClient = (clientId) => {
+    axios.delete(`http://localhost:5000/api/client-contact?clientId=${clientId}&contactId=${contactId}`)
+      .then((response) => {
+        // Filter out the unlinked client from the state
+        setLinkedClients((prevClients) => 
+          prevClients.filter(client => client.id !== clientId)
+        );
+        console.log("Client unlinked successfully:", response.data);
+        alert("Client unlinked successfully");
+      })
+      .catch((error) => {
+        console.error("Error unlinking client:", error);
+      });
+  };
+
   if (isLoading) {
     return <div className='text-dark'>Loading...</div>
   }
@@ -37,7 +54,7 @@ export default function ContactsClientsTab() {
           <div key={client.id}>
             <div>Client Name: {client.client_name}</div>
             <div>Client Code: {client.client_code}</div>
-            <button>Unlink Client</button>
+            <button onClick={() => handleUnlinkClient(client.id)}>Unlink Client</button>
           </div>
         ))
       )}

@@ -290,6 +290,27 @@ app.get("/api/client-contacts", (req, res) => {
 });
 
 
+// Delete client-contact relationship
+app.delete("/api/client-contact", (req, res) => {
+  const { clientId, contactId } = req.query;
+
+  // Validate input
+  if (!clientId || !contactId) {
+    return res.status(400).json({ error: "Both clientId and contactId are required." });
+  }
+
+  const query = "DELETE FROM client_contact WHERE client = ? AND contact = ?";
+  
+  db.query(query, [clientId, contactId], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else if (result.affectedRows === 0) {
+      res.status(404).json({ message: "Client-contact relationship not found." });
+    } else {
+      res.status(200).json({ message: "Client unlinked successfully." });
+    }
+  });
+});
 
 const port = 5000;
 
