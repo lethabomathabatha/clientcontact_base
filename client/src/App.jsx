@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './components/Home';
@@ -14,6 +13,7 @@ import CreateContact from './components/Contacts/CreateContact';
 import ClientSuccess from './components/Clients/ClientSuccess';
 import ContactSuccess from './components/Contacts/ContactSuccess';
 import ClientsGeneralTab from './components/Clients/ClientsUpdateTabs/ClientsGeneralTab';
+import LinkClientContact from './components/Clients/LinkClientContact';
 
 export default function App() {
   return (
@@ -33,6 +33,8 @@ export default function App() {
         <Route path="/contacts/success" element={<ContactSuccess />} />
 
         <Route path="/clients/:client_id/general" element={<ClientsGeneralTab />} />
+
+        <Route path="/link" element={<LinkClientContact />} />
       </Routes>
     </BrowserRouter>
   )
