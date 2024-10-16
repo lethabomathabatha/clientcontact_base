@@ -24,12 +24,12 @@ export default function ClientsContactsTab() {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-dark">Loading...</div>;
   }
 
   return (
     <div>
-      {linkedClients.length === 0 ? (
+      {linkedContacts.length === 0 ? (
         <div>
           <p>No contacts found</p>
           <button onClick={handleLinkContact}>Link a Contact</button>
