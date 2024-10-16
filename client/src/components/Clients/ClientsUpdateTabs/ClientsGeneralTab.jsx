@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function ClientsGeneralTab() {
   const { code } = useParams(); 
+  
   console.log("Client code from route:", code); 
   const [clientName, setClientName] = useState('');
   const [originalClientName, setOriginalClientName] = useState('');
@@ -17,7 +18,7 @@ export default function ClientsGeneralTab() {
       axios.get(`http://localhost:5000/api/clients/${code}`)
         .then((response) => {
           const client = response.data;
-          console.log("Fetched client data:", client); // Debugging line
+          console.log("Fetched client data:", client); 
           setClientName(client.name);
           setOriginalClientName(client.name);
           setClientCode(client.code); 
