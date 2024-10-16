@@ -4,15 +4,17 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export default function ClientsGeneralTab() {
-  const { id } = useParams(); 
-  console.log("Client ID from route:", id); 
+  const { code } = useParams(); 
+  console.log("Client code from route:", code); 
   const [clientName, setClientName] = useState('');
   const [originalClientName, setOriginalClientName] = useState('');
   const [clientCode, setClientCode] = useState('');
 
   useEffect(() => {
-    if (id) { 
-      axios.get(`http://localhost:5000/api/clients/${id}`)
+    console.log(`first ${code}`)
+    if (code) { 
+      console.log(`second ${code}`)
+      axios.get(`http://localhost:5000/api/clients/${code}`)
         .then((response) => {
           const client = response.data;
           console.log("Fetched client data:", client); // Debugging line
@@ -25,7 +27,7 @@ export default function ClientsGeneralTab() {
           alert("Failed to load client data.");
         });
     }
-  }, [id]);
+  }, []);
   
 
   const handleSave = () => {
@@ -50,6 +52,7 @@ export default function ClientsGeneralTab() {
           className="form-control"
           id="name"
           value={clientName}
+          placeholder={clientName}
           onChange={(e) => setClientName(e.target.value)}
         />
       </div>
