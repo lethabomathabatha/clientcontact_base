@@ -40,7 +40,7 @@ export default function ClientsTable() {
                         {clients.length > 0 ? (
                             clients.map((client) => (
                                 <tr key={client.id}>
-                                    <td className='text-start'><Link to={`/client?code=${client.code}`}>{client.name}</Link></td>
+                                    <td className='text-start'><Link to={`/client/${client.code}`}>{client.name}</Link></td>
                                     <td className='text-start'>{client.code}</td>
                                     <td className='align-middle'>{client.contact_count}</td> 
                                 </tr>
