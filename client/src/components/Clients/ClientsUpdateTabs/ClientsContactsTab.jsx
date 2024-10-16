@@ -3,24 +3,30 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 
 export default function ClientsContactsTab() {
-  const { id: clientId } = useParams();
-  const [linkedContacts, setLinkedContacts] = useState([]);
+  const { id: contactId } = useParams();
+  const [linkedContacts, setLinkedContacts] = useState({
+    name: '',
+    contact_surname: '',
+    email: ''
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // fetch linked contacts for client
-    if (clientId) {
-      axios.get(`http://localhost:5000/api/client-contacts?clientId=${clientId}`)
+    if (contactId) {
+      axios.get(`http://localhost:5000/api/client-contacts?contactId=${contactId}`)
         .then((response) => {
+          console.log( response.data);
           setLinkedContacts(response.data);
-          setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error fetching linked contacts:", error);
+        })
+        .finally(() => {
           setIsLoading(false);
         });
     }
-  }, [clientId]);
+  }, [contactId]);
+  
 
   if (isLoading) {
     return <div className="text-dark">Loading...</div>;
@@ -34,12 +40,12 @@ export default function ClientsContactsTab() {
           <button><Link to="/link">Link a Contact</Link></button>
         </div>
       ) : (
+        // map through the linked contact's array to retrieve name surname and email
         linkedContacts.map((contact) => (
           <div key={contact.id}>
-            <div>Contact Name: {contact.name}</div>
-            <div>Contact Surname: {contact.contact_surname}</div>
-            <div>Contact Emails: {contact.email} </div>
-            <button>Unlink Contact</button>
+            <p>Name: {contact.name}</p>
+            <p>Surname: {contact.contact_surname}</p>
+            <p>Email: {contact.email}</p>
           </div>
         ))
       )}
