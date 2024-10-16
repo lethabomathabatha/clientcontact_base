@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/api" element={<TestAPI />} />
         <Route path="/clients" element={<ClientsPage />} />
         <Route path="/client/:code" element={<ClientsDetails />} />
+        
         <Route path="/contacts/:id" element={<ContactsDetails />} />
         <Route path="/clients/new" element={<CreateClient />} />
         <Route path="/contacts/new" element={<CreateContact />} />

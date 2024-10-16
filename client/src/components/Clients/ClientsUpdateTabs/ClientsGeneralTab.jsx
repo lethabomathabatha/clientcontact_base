@@ -33,7 +33,7 @@ export default function ClientsGeneralTab() {
 
   const handleSave = () => {
     if (clientName !== originalClientName) {
-      axios.put(`http://localhost:5000/api/clients/${id}`, { name: clientName })
+      axios.put(`http://localhost:5000/api/clients/${code}`, { name: clientName })
         .then(() => {
           alert('Client name updated successfully');
           setOriginalClientName(clientName); 
