@@ -28,31 +28,30 @@ export default function ClientsTable() {
             {loading ? (
                 <p className='text-dark'>Loading...</p>
             ) : (
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th className='text-start'>Client Name</th>
-                            <th className='text-start'>Client Code</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {clients.length > 0 ? (
-                            clients.map((client) => (
+                clients.length > 0 ? (
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th className='text-start'>Client Name</th>
+                                <th className='text-start'>Client Code</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {clients.map((client) => (
                                 <tr key={client.id}>
                                     <td className='text-start'><Link to={`/client/${client.code}`}>{client.name}</Link></td>
                                     <td className='text-start'>{client.code}</td>
                                     <td className='align-middle'>{client.contact_count}</td> 
                                 </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="3" className="text-center">No clients found</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-            )}
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
+                    <div className='text-dark fw-bold'>
+                        No clients found
+                    </div>
+                ))}
         </div>
     );
 }
