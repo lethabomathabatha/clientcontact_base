@@ -29,6 +29,7 @@ export default function ContactsTable() {
         {loading ? (
             <p className='text-dark'>Loading...</p>
         ) : (
+            contacts.length > 0 ? (
             <table className="table table-striped fs-5">
                 <thead>
                     <tr>
@@ -39,23 +40,21 @@ export default function ContactsTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {contacts.length > 0 ? (
-                        contacts.map((contact, index) => (
+                    {contacts.map((contact, index) => (
                             <tr key={index}>
                                 <td className='text-start'><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
                                 <td className='text-start'><Link to={`/contacts/${contact.id}`}>{contact.contact_surname}</Link></td>
                                 <td className='text-start'>{contact.email}</td>
                                 <td className='align-middle'>{contact.client_count}</td> 
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="4" className="text-center">No contacts found</td>
-                        </tr>
-                    )}
-                </tbody>
+                        ))}
+                    </tbody>
             </table>
-        )}
+                    ) : (
+                        <div className='text-dark fw-bold'>
+                            No contacts found
+                        </div>
+                    ))}
     </div>
 );
 }
