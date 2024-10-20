@@ -24,6 +24,7 @@ export default function ContactsClientsTab() {
 
   // handle unlinking
   const handleUnlinkClient = (clientId) => {
+    console.log('clicked')
     axios.delete(`http://localhost:5000/api/client-contact?clientId=${clientId}&contactId=${contactId}`)
       .then((response) => {
         // Filter out the unlinked client from the state
@@ -43,20 +44,33 @@ export default function ContactsClientsTab() {
   }
 
   return (
-    <div>
+    <div className='text-center custom-table'>
       {linkedClients.length === 0 ? (
         <div>
           <p>No clients found</p>
           <button><Link to="/link">Link a Client</Link></button>
         </div>
       ) : (
-        linkedClients.map((client) => (
-          <div key={client.id}>
-            <div>Client Name: {client.client_name}</div>
-            <div>Client Code: {client.client_code}</div>
-            <button onClick={() => handleUnlinkClient(client.id)}>Unlink Client</button>
-          </div>
-        ))
+        
+          <table className="table table-stripe fs-6">
+            <thead>
+                <tr>
+                    <th className='text-start'>Client Name</th>
+                    <th className='text-start'>Client Code</th>
+                    <th className=''></th>
+                </tr>
+            </thead>
+            <tbody>
+                {linkedClients.map((client) => (
+                    <tr key={client.id}>
+                        <td className='text-start'>{client.client_name}</td>
+                        <td className='text-start'>{client.client_code}</td>
+                        <td className=''><button onClick={() => handleUnlinkClient(client.id)}>Unlink Client</button></td> 
+                    </tr>
+                ))}
+            </tbody>
+        </table>          
+        
       )}
     </div>
   );
