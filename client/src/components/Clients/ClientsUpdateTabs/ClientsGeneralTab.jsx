@@ -31,18 +31,18 @@ export default function ClientsGeneralTab() {
   }, []);
   
 
-  const handleSave = () => {
-    if (clientName !== originalClientName) {
-      axios.put(`http://localhost:5000/api/clients/${code}`, { name: clientName })
-        .then(() => {
-          alert('Client name updated successfully');
-          setOriginalClientName(clientName); 
-        })
-        .catch((error) => {
-          console.error("There was an error updating the client name!", error);
-        });
-    }
-  };
+  // const handleSave = () => {
+  //   if (clientName !== originalClientName) {
+  //     axios.put(`http://localhost:5000/api/clients/${code}`, { name: clientName })
+  //       .then(() => {
+  //         alert('Client name updated successfully');
+  //         setOriginalClientName(clientName); 
+  //       })
+  //       .catch((error) => {
+  //         console.error("There was an error updating the client name!", error);
+  //       });
+  //   }
+  // };
 
   return (
     <div>
@@ -54,7 +54,7 @@ export default function ClientsGeneralTab() {
           id="name"
           value={clientName}
           placeholder={clientName}
-          onChange={(e) => setClientName(e.target.value)}
+          // onChange={(e) => setClientName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -67,7 +67,7 @@ export default function ClientsGeneralTab() {
           readOnly
         />
       </div>
-      <button className="btn btn-primary" onClick={handleSave}>Save</button>
+      {/* <button className="btn btn-primary" onClick={handleSave}>Save</button> */}
     </div>
   );
 }
