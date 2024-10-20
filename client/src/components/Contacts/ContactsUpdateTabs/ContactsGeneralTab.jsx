@@ -41,9 +41,9 @@ useEffect(() => {
   }; */
 
   return (
-    <div>
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">Contact Name</label>
+    <div style={{ width: '25%'}}>
+      <div className="mb-4">
+        <label htmlFor="name" className="form-label fw-bold text-uppercase m-0">Contact Name</label>
         <input
           type="text"
           className="form-control"
@@ -51,11 +51,12 @@ useEffect(() => {
           value={contactData.name}
           placeholder={contactData.name}
           readonly
+          disabled
           // onChange={(e) => setContactData.name(e.target.value)}
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="contact_surname" className="form-label">Contact Surname</label>
+      <div className="mb-4">
+        <label htmlFor="contact_surname" className="form-label fw-bold text-uppercase m-0">Contact Surname</label>
         <input
           type="text"
           className="form-control"
@@ -63,11 +64,12 @@ useEffect(() => {
           value={contactData.contact_surname}
           placeholder={contactData.contact_surname}
           readonly
+          disabled
           // onChange={(e) => setContactData.contact_surname(e.target.value)}
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">Contact Email</label>
+      <div className="mb-4">
+        <label htmlFor="email" className="form-label fw-bold text-uppercase m-0">Contact Email</label>
         <input
           type="email"
           className="form-control"
@@ -75,6 +77,7 @@ useEffect(() => {
           value={contactData.email}
           placeholder={contactData.email}
           readonly
+          disabled
           // onChange={(e) => setContactData.email(e.target.value)}
         />
       </div>

@@ -201,6 +201,10 @@ button.btn-warning {
   margin: 0 auto;
 }
 
+input:disabled {
+  background-color: white!important;
+}
+
 /* mobile queries */
 @media screen and (max-width: 768px) {
   .hero-section h1 {

@@ -45,26 +45,29 @@ export default function ClientsGeneralTab() {
   // };
 
   return (
-    <div>
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">Client Name:</label>
+    <div style={{ width: '25%'}}>
+      <div className="mb-4">
+        <label htmlFor="name" className="form-label fw-bold text-uppercase m-0">Client Name</label>
         <input
           type="text"
           className="form-control"
           id="name"
           value={clientName}
           placeholder={clientName}
+          readOnly
+          disabled
           // onChange={(e) => setClientName(e.target.value)}
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="clientCode" className="form-label">Client Code:</label>
+      <div className="mb-4">
+        <label htmlFor="clientCode" className="form-label fw-bold text-uppercase m-0">Client Code</label>
         <input
           type="text"
           className="form-control"
           id="clientCode"
           value={clientCode}
           readOnly
+          disabled
         />
       </div>
       {/* <button className="btn btn-primary" onClick={handleSave}>Save</button> */}
