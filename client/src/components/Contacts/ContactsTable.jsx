@@ -30,7 +30,7 @@ export default function ContactsTable() {
             <p className='text-dark'>Loading...</p>
         ) : (
             contacts.length > 0 ? (
-            <table className="table table-stripe fs-5 table-hove">
+            <table className="table table-stripe fs-6 table-hove">
                 <thead>
                     <tr className=''>
                         <th className='text-start'>Contact Name</th>

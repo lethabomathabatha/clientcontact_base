@@ -29,7 +29,7 @@ export default function ClientsTable() {
                 <p className='text-dark'>Loading...</p>
             ) : (
                 clients.length > 0 ? (
-                    <table className="table table-stripe fs-5">
+                    <table className="table table-stripe fs-6">
                         <thead>
                             <tr>
                                 <th className='text-start'>Client Name</th>
