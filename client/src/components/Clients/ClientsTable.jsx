@@ -22,19 +22,19 @@ export default function ClientsTable() {
     }, []);
 
     return (
-        <div className='text-center'>
+        <div className='text-center custom-table'>
             <div className='fw-bold'>Clients Table</div>
 
             {loading ? (
                 <p className='text-dark'>Loading...</p>
             ) : (
                 clients.length > 0 ? (
-                    <table className="table table-striped">
+                    <table className="table table-stripe fs-5">
                         <thead>
                             <tr>
                                 <th className='text-start'>Client Name</th>
                                 <th className='text-start'>Client Code</th>
-                                <th></th>
+                                <th className=''></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,7 +42,7 @@ export default function ClientsTable() {
                                 <tr key={client.id}>
                                     <td className='text-start'><Link to={`/client/${client.code}`}>{client.name}</Link></td>
                                     <td className='text-start'>{client.code}</td>
-                                    <td className='align-middle'>{client.contact_count}</td> 
+                                    <td className='align-middle round-number'>{client.contact_count}</td> 
                                 </tr>
                             ))}
                         </tbody>

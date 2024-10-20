@@ -176,6 +176,31 @@ button.btn-warning {
   font-size: 1.25rem; 
 }
 
+.round-number {
+  background-color: var(--cc-dark-red)!important;
+  border-radius: 100%;
+  color: white!important;
+  width: 45px!important;  
+  height: 45px!important;
+}
+
+.table a{
+  text-decoration: none;
+  color: black!important;
+  font-weight: 600!important;
+}
+
+.table a:hover {
+  color: var(--cc-dark-red)!important;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table {
+  width:50%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 /* mobile queries */
 @media screen and (max-width: 768px) {
   .hero-section h1 {

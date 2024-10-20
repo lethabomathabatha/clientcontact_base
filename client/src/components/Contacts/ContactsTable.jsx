@@ -23,16 +23,16 @@ export default function ContactsTable() {
     }, []);
     
     return (
-        <div className='text-center'>
+        <div className='text-center custom-table'>
         <div className='fw-bold'>Contacts Table</div>
 
         {loading ? (
             <p className='text-dark'>Loading...</p>
         ) : (
             contacts.length > 0 ? (
-            <table className="table table-striped fs-5">
+            <table className="table table-stripe fs-5 table-hove">
                 <thead>
-                    <tr>
+                    <tr className=''>
                         <th className='text-start'>Contact Name</th>
                         <th className='text-start'>Contact Surname</th>
                         <th className='text-start'>Contact Email</th>
@@ -45,7 +45,7 @@ export default function ContactsTable() {
                                 <td className='text-start'><Link to={`/contacts/${contact.id}`}>{contact.name}</Link></td>
                                 <td className='text-start'><Link to={`/contacts/${contact.id}`}>{contact.contact_surname}</Link></td>
                                 <td className='text-start'>{contact.email}</td>
-                                <td className='align-middle'>{contact.client_count}</td> 
+                                <td className='align-middle round-number'>{contact.client_count}</td> 
                             </tr>
                         ))}
                     </tbody>
