@@ -25,6 +25,7 @@ export default function ContactsClientsTab() {
   // handle unlinking
   const handleUnlinkClient = (clientId) => {
     console.log('clicked')
+    console.log("Client ID:", clientId, "Contact ID:", contactId);
     axios.delete(`http://localhost:5000/api/client-contact?clientId=${clientId}&contactId=${contactId}`)
       .then((response) => {
         // Filter out the unlinked client from the state
