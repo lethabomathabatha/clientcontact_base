@@ -53,9 +53,9 @@ export default function CreateContact() {
     return (
         <div className="text-whit m-5 mx-auto justify-content-center d-flex flex-column align-items-center">
             
-            <Link to='/' className=' back-btn text-decoration-none text-white'>
+            <Link to='/contacts' className=' back-btn text-decoration-none text-white'>
                 <FiChevronLeft />
-                Back to Home
+                Back to Contacts
             </Link>
 
             <div class="custom-header-section d-flex justify-content-between align-items-center">
