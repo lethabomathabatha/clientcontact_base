@@ -15,6 +15,7 @@ export default function ContactsClientsTab() {
           setIsLoading(false);
         })
         .catch((error) => {
+          alert("Oops... Failed to unlink client!");
           console.error("Error fetching linked clients:", error);
           setIsLoading(false);
         });
