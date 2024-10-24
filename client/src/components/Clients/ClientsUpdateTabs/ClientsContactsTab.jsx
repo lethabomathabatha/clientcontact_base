@@ -36,6 +36,7 @@ export default function ClientsContactsTab() {
         alert("Contact unlinked successfully");
       })
       .catch((error) => {
+        alert("Oops... Failed to unlink contact!");
         console.error("Error unlinking Contact:", error);
       });
   };
